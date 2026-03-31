@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__figma__get_figma_data",
+      "mcp__figma__download_figma_images",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:5001/)",
+      "Bash(kill 2095)",
+      "Bash(curl -s -X POST http://127.0.0.1:5001/upload -F \"file=@/tmp/test_icon.png\")",
+      "Bash(python3 -m json.tool)",
+      "Bash(xargs kill:*)",
+      "Bash(python3 -c \"from PIL import Image; img=Image.open\\(''''/Users/igor/upplyx/static/img/system-icons/1.png''''\\); print\\(img.size\\)\")",
+      "Bash(python3 -c \"from PIL import Image; img=Image.open\\(''/Users/igor/upplyx/static/img/system-icons/1.png''\\); print\\(img.size\\)\")",
+      "Bash(ls /Users/igor/upplyx/static/img/*.svg)"
+    ]
+  }
+}

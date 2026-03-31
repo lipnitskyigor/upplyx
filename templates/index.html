@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upplyx — Icon Readiness Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="#">Upplyx</a>
+      <div class="nav-links">
+        <a href="#how-it-works" class="nav-link">How it Works</a>
+        <a href="#what-youll-get" class="nav-link">What you'll get</a>
+        <button class="btn btn-primary btn-nav" id="nav-upload-btn" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          Upload
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <h1 class="hero-headline">
+        Your icon has one job.<br />Does it pass?
+      </h1>
+    </div>
+
+    <div class="hero-upload-zone" id="upload-zone" role="button" tabindex="0"
+         aria-label="Upload icon">
+      <input type="file" id="file-input" accept=".png,.jpg,.jpeg,.webp" hidden />
+      <button class="btn btn-primary btn-upload-zone" id="hero-upload-trigger"
+              type="button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        Upload
+      </button>
+      <p class="hero-upload-text">Choose images or drag &amp; drop it here.</p>
+      <p class="hero-upload-sub">JPG, JPEG, PNG and WEBP. Max 20 MB.</p>
+    </div>
+
+    <div class="upload-progress hidden" id="upload-progress">
+      <div class="spinner"></div>
+      <p>Analyzing your icon&hellip;</p>
+    </div>
+    <div class="upload-error hidden" id="upload-error"></div>
+  </section>
+
+  <!-- ── How it Works ── -->
+  <section class="landing-section" id="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How it works</h2>
+      <div class="steps-row">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3 class="step-name">Upload</h3>
+          <p class="step-desc">Drop your icon. PNG, JPG up to 20&nbsp;MB</p>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3 class="step-name">Audit</h3>
+          <p class="step-desc">Get a full technical and visual report instantly</p>
+        </div>
+        <div class="step-divider"></div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3 class="step-name">Compare</h3>
+          <p class="step-desc">Add competitors and see how yours stands out</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── What you'll get ── -->
+  <section class="landing-section" id="what-youll-get">
+    <div class="container">
+      <h2 class="section-title">What you'll get</h2>
+
+      <div class="wyg-wrapper">
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" role="tab" data-tab="preview">Context Preview</button>
+          <button class="tab" role="tab" data-tab="visibility">Visibility</button>
+          <button class="tab" role="tab" data-tab="technical">Technical Readiness</button>
+          <button class="tab" role="tab" data-tab="summary">Summary</button>
+        </div>
+
+        <!-- Tab: Context Preview -->
+        <div class="tab-panel active" id="tab-preview">
+          <div class="wyg-preview-wrap" data-preview="1">
+
+            <p class="wyg-preview-desc" data-show="1">Add up to 16 competitor icons to compare side by side</p>
+            <p class="wyg-preview-desc" data-show="2">See how your icon performs in a real competitive environment</p>
+
+            <div class="wyg-toggle-wrap">
+              <button class="wyg-toggle" id="wyg-toggle" aria-label="Switch preview state">
+                <span class="wyg-toggle-dot"></span>
+                <span class="wyg-toggle-dot"></span>
+              </button>
+            </div>
+
+            <img src="/static/img/context-preview-empty.png"
+                 data-show="1" class="wyg-phone-img"
+                 alt="Before adding competitors" />
+            <img src="/static/img/context-preview-with-icons.png"
+                 data-show="2" class="wyg-phone-img"
+                 alt="With competitors added" />
+
+          </div>
+        </div>
+
+        <!-- Tab: Visibility -->
+        <div class="tab-panel" id="tab-visibility">
+          <div class="vis-preview-wrap" data-vis="1">
+
+            <p class="wyg-preview-desc" data-vis-show="1">How well your icon stands out and stays recognizable in store grids</p>
+            <p class="wyg-preview-desc" data-vis-show="2">Improve visibility by optimizing contrast and simplicity</p>
+
+            <div class="wyg-toggle-wrap">
+              <button class="wyg-toggle" id="vis-toggle" aria-label="Switch visibility state">
+                <span class="wyg-toggle-dot"></span>
+                <span class="wyg-toggle-dot"></span>
+              </button>
+            </div>
+
+            <img src="/static/img/visibility-1.png" data-vis-show="1" class="wyg-phone-img" alt="Visibility — High clarity" />
+            <img src="/static/img/Visibility-2.png" data-vis-show="2" class="wyg-phone-img" alt="Visibility — Moderate clarity" />
+
+          </div>
+        </div>
+
+        <!-- Tab: Technical Readiness -->
+        <div class="tab-panel" id="tab-technical">
+          <div class="tech-preview-wrap" data-tech="1">
+
+            <p class="wyg-preview-desc" data-tech-show="1">Ensure your icon meets all app store technical requirements</p>
+            <p class="wyg-preview-desc" data-tech-show="2">Issues detected that require attention before submission</p>
+
+            <div class="wyg-toggle-wrap">
+              <button class="wyg-toggle" id="tech-toggle" aria-label="Switch technical readiness state">
+                <span class="wyg-toggle-dot"></span>
+                <span class="wyg-toggle-dot"></span>
+              </button>
+            </div>
+
+            <img src="/static/img/technical-1.png" data-tech-show="1" class="wyg-phone-img" alt="Technical Readiness — Ready" />
+            <img src="/static/img/technical-2.png" data-tech-show="2" class="wyg-phone-img" alt="Technical Readiness — Needs Attention" />
+
+          </div>
+        </div>
+
+        <!-- Tab: Summary -->
+        <div class="tab-panel" id="tab-summary">
+          <div class="sum-preview-wrap" data-sum="1">
+
+            <p class="wyg-preview-desc" data-sum-show="1">Your icon's overall performance across all technical and visual checks</p>
+            <p class="wyg-preview-desc" data-sum-show="2">Actionable recommendations based on your icon's scores</p>
+
+            <div class="wyg-toggle-wrap">
+              <button class="wyg-toggle" id="sum-toggle" aria-label="Switch summary state">
+                <span class="wyg-toggle-dot"></span>
+                <span class="wyg-toggle-dot"></span>
+              </button>
+            </div>
+
+            <img src="/static/img/summary-1.png" data-sum-show="1" class="wyg-phone-img" alt="Summary — Insight" />
+            <img src="/static/img/summary-2.png" data-sum-show="2" class="wyg-phone-img" alt="Summary — Recommendations" />
+
+          </div>
+        </div>
+
+      </div><!-- /.wyg-wrapper -->
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       TOOL SECTIONS (revealed after upload)
+  ════════════════════════════════════════ -->
+
+  <!-- ════════════════════════════════════════
+       RESULTS PAGE (revealed after upload)
+  ════════════════════════════════════════ -->
+  <section id="results-page" class="hidden">
+    <div class="results-col">
+
+      <!-- 1. Technical Readiness -->
+      <div class="res-section" id="step-analysis">
+        <div class="res-card">
+          <div class="res-sec-row res-sec-row--header">
+            <div class="res-left-col">
+              <span class="res-num">1</span>
+            </div>
+            <span class="res-title">Technical Readiness</span>
+          </div>
+          <div class="res-sec-row">
+            <div class="res-left-col">
+              <img id="icon-preview" src="" alt="Your icon" class="res-icon-large" />
+            </div>
+            <div id="tech-checks" class="res-right-col"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Visibility -->
+      <div class="res-section">
+        <div class="res-card">
+          <div class="res-sec-row res-sec-row--header">
+            <div class="res-left-col">
+              <span class="res-num">2</span>
+            </div>
+            <span class="res-title">Visibility</span>
+          </div>
+          <div class="res-sec-row">
+            <div class="res-left-col"></div>
+            <div id="vis-metrics" class="res-right-col"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Context Preview -->
+      <div class="res-section" id="step-competitors">
+        <div class="res-card">
+          <div class="res-sec-row res-sec-row--header">
+            <div class="res-left-col">
+              <span class="res-num">3</span>
+            </div>
+            <span class="res-title">Context Preview</span>
+          </div>
+
+          <!-- Phone mockup — always visible -->
+          <div class="mockup-wrap">
+            <div class="phone-mockup">
+              <div class="phone-screen">
+                <img src="/static/img/phone-statusbar.svg" class="phone-statusbar-img" alt="" />
+                <div class="app-grid" id="app-grid"></div>
+                <div class="phone-dock">
+                  <img src="/static/img/system-icons/16.png" class="app-dock-icon" alt="" />
+                  <img src="/static/img/system-icons/17.png" class="app-dock-icon" alt="" />
+                  <img src="/static/img/system-icons/18.png" class="app-dock-icon" alt="" />
+                  <img src="/static/img/system-icons/19.png" class="app-dock-icon" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Competitor upload form -->
+          <p class="comp-section-title">Add competitor icons to see how yours stands out.</p>
+          <div class="comp-form" id="competitor-zone" tabindex="0">
+            <input type="file" id="competitor-input" accept=".png,.jpg,.jpeg,.webp" multiple hidden />
+            <div class="competitor-grid" id="competitor-grid"></div>
+            <div class="comp-form-actions">
+              <button class="btn btn-outline" id="comp-upload-btn" type="button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                Upload
+              </button>
+              <button class="btn btn-primary" id="generate-summary-btn" type="button" disabled>
+                Generate Summary
+              </button>
+            </div>
+            <p class="comp-form-desc">Choose images or drag &amp; drop it here.</p>
+            <p class="comp-form-count" id="comp-count-text">Add up to 16 competitor icons</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 4. Summary -->
+      <div class="res-section" id="step-summary">
+        <div class="res-card">
+          <div class="res-sec-row res-sec-row--header">
+            <div class="res-left-col">
+              <span class="res-num">4</span>
+            </div>
+            <span class="res-title">Summary</span>
+          </div>
+          <div class="res-sec-row">
+            <div class="res-left-col"></div>
+            <div class="res-right-col">
+              <div id="summary-cards" class="summary-cards"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Upplyx &copy; 2026 &mdash; Icon Readiness Analyzer</p>
+    </div>
+  </footer>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
