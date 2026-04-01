@@ -197,6 +197,9 @@ def generate_summary(technical, visibility, overall):
     simplicity = visibility['simplicity']
 
     # ── Verdict ──
+    critical_issues = {'background', 'resolution', 'shape'}
+    has_critical = bool(critical_issues & set(technical.get('issues', [])))
+
     if overall >= 70:
         verdict       = "Your Icon Performs Strongly"
         verdict_level = "strong"
@@ -206,6 +209,11 @@ def generate_summary(technical, visibility, overall):
     else:
         verdict       = "Your Icon Needs Significant Improvements"
         verdict_level = "weak"
+
+    # Downgrade verdict if critical technical issues exist
+    if has_critical and verdict_level == "strong":
+        verdict       = "Your Icon Needs Some Work"
+        verdict_level = "medium"
 
     # ── Insight ──
     if contrast >= 67:
