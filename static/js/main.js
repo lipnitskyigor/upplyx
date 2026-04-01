@@ -10,12 +10,6 @@ document.querySelectorAll('.tab').forEach(tab => {
   });
 });
 
-// Nav "↑ Upload" scrolls to hero upload zone
-document.getElementById('nav-upload-btn').addEventListener('click', e => {
-  e.preventDefault();
-  document.getElementById('upload-zone').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  setTimeout(() => document.getElementById('upload-zone').focus(), 400);
-});
 
 // ─── Context Preview toggle (landing page) ───────────────────────────────────
 const wygToggle = document.getElementById('wyg-toggle');
@@ -78,6 +72,17 @@ const competitorInput = $('competitor-input');
 const competitorGrid  = $('competitor-grid');
 const genSummaryBtn   = $('generate-summary-btn');
 
+// ─── Nav Upload button ────────────────────────────────────────────────────────
+document.getElementById('nav-upload-btn').addEventListener('click', e => {
+  e.preventDefault();
+  if (resultsPage.classList.contains('hidden')) {
+    uploadZone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => uploadZone.focus(), 400);
+  } else {
+    fileInput.click();
+  }
+});
+
 // ─── Competitor upload button ─────────────────────────────────────────────────
 document.getElementById('comp-upload-btn').addEventListener('click', e => {
   e.stopPropagation();
@@ -106,6 +111,14 @@ fileInput.addEventListener('change', e => {
 });
 
 async function handleMainUpload(file) {
+  // Reset state for re-upload
+  state.iconFilename = null;
+  state.iconUrl      = null;
+  state.analysis     = null;
+  state.competitors  = [];
+  resultsPage.classList.add('hidden');
+  genSummaryBtn.disabled = true;
+
   uploadZone.classList.add('hidden');
   uploadProgress.classList.remove('hidden');
   uploadError.classList.add('hidden');
